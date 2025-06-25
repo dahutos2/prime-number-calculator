@@ -56,7 +56,7 @@ pip install kivy-ios
 make ios
 ```
 
-* `app/main.py` をもとに `primecalc/` フォルダが自動生成され、必要ライブラリをビルドします。
+* `src/main.py` をもとに `primecalc/` フォルダが自動生成され、必要ライブラリをビルドします。
 
 ### 3. iOSシミュレータで起動 or 実機用に Xcode を開く
 
@@ -73,7 +73,7 @@ make ios-open
 | `make ios`      | iOS向けにプロジェクトを生成してビルド（自動化済） |
 | `make ios-open` | Xcodeで開いて署名・実機ビルドを行う               |
 
-## 📌 注意事項
+## 注意事項
 
 * iOS用ライブラリは `sh/build_ios.sh` に明示的に指定されています（pipではなくtoolchainでビルドされます）
 * `.kv` ファイルは App クラス名に対応する必要があります（`Calculator` → `calculator.kv`）

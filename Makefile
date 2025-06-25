@@ -2,12 +2,11 @@
 
 # 仮想環境＋依存インストール（mac開発用）
 setup:
-	uv venv
-	uv pip install -r requirements.txt
+	uv venv & uv pip install -r requirements.txt
 
 # アプリ実行（mac開発用）
 run:
-	uv run python app/main.py
+	uv run python src/main.py
 
 # iOSビルド
 ios:

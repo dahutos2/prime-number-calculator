@@ -30,4 +30,8 @@ rm -rf "$PROJECT_DIR/assets/fonts"
 mkdir -p "$PROJECT_DIR/assets/fonts"
 cp assets/fonts/ipaexg.ttf "$PROJECT_DIR/assets/fonts/"
 
+echo "📁 アイコンを同期 (icon.png → $PROJECT_DIR/icon.png)"
+rm -rf "$PROJECT_DIR/icon.png"
+cp icon.png "$PROJECT_DIR/icon.png"
+
 echo "✅ 完了: $PROJECT_DIR に iOS ビルド環境が整いました"

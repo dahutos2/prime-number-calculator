@@ -1,20 +1,20 @@
-import pathlib
-from kivy.resources import resource_add_path
+import os
+from kivy.resources import resource_add_path, resource_find
 from kivy.core.text import LabelBase, DEFAULT_FONT
 
-# プロジェクトルートからの assets/fonts ディレクトリを絶対パスで取得
-BASE_DIR = pathlib.Path(__file__).parent.parent
-FONTS_DIR = BASE_DIR / "assets" / "fonts"
-IPA_FONT = FONTS_DIR / "ipaexg.ttf"
+# iOSでは __file__ を使った path 解決が正しく動作しないため、
+# 相対パスで指定して resource_find に依存する方式に変更
+resource_add_path(os.path.join(os.path.dirname(__file__), "assets", "fonts"))
 
-# Kivy に「ここもリソースパスです」と教える
-resource_add_path(str(FONTS_DIR))
+# ipaexg.ttf のパスを取得（リソースとして正しく見つかることを確認）
+ipa_font_path = resource_find("ipaexg.ttf")
+if not ipa_font_path:
+    raise FileNotFoundError("ipaexg.ttf がリソースパスに見つかりません")
 
-# DEFAULT_FONT として参照される名前をすべて ipaexg.ttf に置き換え
 LabelBase.register(
     name=DEFAULT_FONT,
-    fn_regular=str(IPA_FONT),
-    fn_bold=str(IPA_FONT),
-    fn_italic=str(IPA_FONT),
-    fn_bolditalic=str(IPA_FONT),
+    fn_regular=ipa_font_path,
+    fn_bold=ipa_font_path,
+    fn_italic=ipa_font_path,
+    fn_bolditalic=ipa_font_path,
 )

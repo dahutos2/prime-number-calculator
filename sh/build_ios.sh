@@ -4,7 +4,7 @@ set -e
 # iOSプロジェクト名はプロジェクトルート名と合わせて
 APP_NAME="primecalc"
 PROJECT_DIR="${APP_NAME}-ios"
-DICTIONARY="./" 
+DICTIONARY="src" 
 PYTHON_LIB="$HOME/.kivy-ios/build/python3/build/lib/libpython3.a"
 
 echo "🔍 Python3 iOSビルドの確認"
@@ -24,11 +24,6 @@ if [ ! -d "$PROJECT_DIR" ]; then
 else
     echo "✅ 既存の $PROJECT_DIR を再利用します"
 fi
-
-echo "📁 フォントを同期 (assets/fonts → $PROJECT_DIR/assets/fonts/)"
-rm -rf "$PROJECT_DIR/assets/fonts"
-mkdir -p "$PROJECT_DIR/assets/fonts"
-cp assets/fonts/ipaexg.ttf "$PROJECT_DIR/assets/fonts/"
 
 echo "📁 アイコンを同期 (icon.png → $PROJECT_DIR/icon.png)"
 rm -rf "$PROJECT_DIR/icon.png"
